@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using JadeLib.API;
 
 namespace JadeLib.Patches
 {
@@ -10,7 +10,9 @@ namespace JadeLib.Patches
     {
         static bool Prefix(Player __instance, ref string message, ref float duration)
         {
-            API.SetHints.Display(__instance, 500, message, duration);
+            var method = Util.GetCallingMethod();
+            var source = $"{method.ReflectedType?.AssemblyQualifiedName}::{method.Name}";
+            SetHints.Display(__instance, 500, message, duration, source);
             return false;
         }
     }
@@ -20,11 +22,9 @@ namespace JadeLib.Patches
     {
         static bool Prefix(Player __instance, Hint hint)
         {
-            var stackTrace = new StackTrace();
-            var method = stackTrace.GetFrame(1).GetMethod();
-            var name = $"{method.GetType().AssemblyQualifiedName}::{method.Name}";
-            Log.Debug(name);
-            API.SetHints.Display(__instance, 500, hint.Content, hint.Duration);
+            var method = Util.GetCallingMethod();
+            var source = $"{method.ReflectedType?.AssemblyQualifiedName}::{method.Name}";
+            SetHints.Display(__instance, 500, hint.Content, hint.Duration, source);
             return false;
         }
     }

@@ -10,9 +10,9 @@
         <AppDesignerFolder>Properties</AppDesignerFolder>
         <RootNamespace>JadeLib</RootNamespace>
         <AssemblyName>JadeLib</AssemblyName>
-        <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
-        <LangVersion>latest</LangVersion>
+        <LangVersion>13</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,6 +34,9 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="0Harmony, Version=2.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\Lib.Harmony.2.3.3\lib\net48\0Harmony.dll</HintPath>
+        </Reference>
         <Reference Include="Assembly-CSharp">
           <HintPath>..\..\..\Useful\assemblies\Assembly-CSharp-Publicized.dll</HintPath>
         </Reference>
@@ -85,6 +88,9 @@
         <Reference Include="Pooling">
           <HintPath>..\..\..\Useful\assemblies\Pooling.dll</HintPath>
         </Reference>
+        <Reference Include="RueI, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+          <HintPath>..\packages\RueI.2.1.0\lib\net48\RueI.dll</HintPath>
+        </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
@@ -110,19 +116,21 @@
         <Reference Include="UnityEngine.PhysicsModule">
           <HintPath>..\..\..\Useful\assemblies\UnityEngine.PhysicsModule.dll</HintPath>
         </Reference>
-        <Reference Include="YamlDotNet">
-          <HintPath>..\..\..\Useful\assemblies\YamlDotNet.dll</HintPath>
-        </Reference>
-        <Reference Include="YamlDotNet, Version=11.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e, processorArchitecture=MSIL">
-          <HintPath>..\packages\EXILED.9.0.0-alpha.19\lib\net48\YamlDotNet.dll</HintPath>
-        </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="API\SetHints.cs" />
+        <Compile Include="API\DynamicHints.cs" />
+        <Compile Include="API\RoomPoint\RoomCommand.cs" />
+        <Compile Include="API\RoomPoint\RoomPointObject.cs" />
+        <Compile Include="API\RoomPoint\SerializedVector3.cs" />
+        <Compile Include="API\Timestamp.cs" />
+        <Compile Include="API\Util.cs" />
         <Compile Include="Config.cs" />
-        <Compile Include="CustomRoles\Scp181\Scp181.cs" />
-        <Compile Include="CustomRoles\Scp181\Scp181Behaviour.cs" />
-        <Compile Include="EventHandlers\SkellyDance.cs" />
-        <Compile Include="TagSucksPlugin.cs" />
+        <Compile Include="Hints\CustomHint.cs" />
+        <Compile Include="Hints\Hints\GlobalHint.cs" />
+        <Compile Include="Hints\IHint.cs" />
+        <Compile Include="Jade.cs" />
+        <Compile Include="Patches\HintPatch.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
     </ItemGroup>
     <ItemGroup>
@@ -131,6 +139,10 @@
     <ItemGroup>
       <None Include="App.config" />
       <None Include="packages.config" />
+    </ItemGroup>
+    <ItemGroup>
+      <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+      <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

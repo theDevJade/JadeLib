@@ -1,13 +1,9 @@
 ﻿namespace JadeLib.API
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using Exiled.API.Features;
     using RueI.Displays;
     using RueI.Elements;
     using RueI.Elements.Delegates;
-    using Utils.NonAllocLINQ;
 
     /// <summary>
     /// A utility class that allows easy creation of dynamic hints.

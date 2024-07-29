@@ -1,6 +1,6 @@
 ﻿using Exiled.API.Interfaces;
 
-namespace TeachingStupidPeople
+namespace JadeLib
 {
     public class Config : IConfig
     {

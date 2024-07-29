@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace JadeLib.API
+﻿namespace JadeLib.API
 {
     using System;
     using System.Collections.Generic;
@@ -38,14 +36,14 @@ namespace JadeLib.API
             }
 
             // Check if there's an existing hint from the same source for the same player
-            var key = new Tuple<string, Player>(source, player);
-            if (elements.TryGetValue(key, out var existingHint))
-            {
-                // Remove the existing hint and cancel its scheduled removal
-                Remove(player, existingHint.Item2);
-                Kill(player, existingHint.Item1);
-                elements.Remove(key);
-            }
+            // var key = new Tuple<string, Player>(source, player);
+            // if (elements.TryGetValue(key, out var existingHint))
+            // {
+            //     // Remove the existing hint and cancel its scheduled removal
+            //     Remove(player, existingHint.Item2);
+            //     Kill(player, existingHint.Item1);
+            //     elements.Remove(key);
+            // }
 
             SetElement element = new(position, hint)
             {
@@ -64,7 +62,7 @@ namespace JadeLib.API
                     display.Update();
                 }, token);
 
-            elements[key] = new Tuple<JobToken, SetElement>(token, element);
+            //elements[key] = new Tuple<JobToken, SetElement>(token, element);
             return element;
         }
 
